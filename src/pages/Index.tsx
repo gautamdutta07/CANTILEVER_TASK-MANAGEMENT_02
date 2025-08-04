@@ -8,6 +8,7 @@ import { TaskDialog } from '@/components/TaskDialog';
 import { TaskFilters } from '@/components/TaskFilters';
 import { TaskStats } from '@/components/TaskStats';
 import { useToast } from '@/hooks/use-toast';
+import codingBackground from '@/assets/coding-background.jpg';
 
 const Index = () => {
   const [selectedTask, setSelectedTask] = useState<Task | undefined>();
@@ -76,8 +77,17 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div 
+      className="min-h-screen bg-background relative"
+      style={{
+        backgroundImage: `url(${codingBackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      <div className="absolute inset-0 bg-background/85 backdrop-blur-sm"></div>
+      <div className="relative z-10 container mx-auto px-4 py-8 max-w-6xl">
         {/* Header */}
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
