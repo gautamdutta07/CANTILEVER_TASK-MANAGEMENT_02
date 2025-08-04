@@ -45,18 +45,18 @@ export const TaskStats = ({ stats }: TaskStatsProps) => {
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
       {statCards.map((stat) => {
         const Icon = stat.icon;
         return (
-          <Card key={stat.label} className="p-4">
-            <div className="flex items-center gap-3">
-              <div className={`p-2 rounded-lg ${stat.bgColor}`}>
-                <Icon className={`h-4 w-4 ${stat.color}`} />
+          <Card key={stat.label} className="p-3 sm:p-4">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-3">
+              <div className={`p-1.5 sm:p-2 rounded-lg ${stat.bgColor}`}>
+                <Icon className={`h-3 w-3 sm:h-4 sm:w-4 ${stat.color}`} />
               </div>
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">{stat.label}</p>
-                <p className="text-2xl font-bold">{stat.value}</p>
+              <div className="text-center sm:text-left">
+                <p className="text-xs sm:text-sm font-medium text-muted-foreground">{stat.label}</p>
+                <p className="text-xl sm:text-2xl font-bold">{stat.value}</p>
               </div>
             </div>
           </Card>
@@ -64,11 +64,11 @@ export const TaskStats = ({ stats }: TaskStatsProps) => {
       })}
       
       {stats.total > 0 && (
-        <Card className="p-4 md:col-span-4">
+        <Card className="p-3 sm:p-4 col-span-2 lg:col-span-4">
           <div className="space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-sm font-medium text-muted-foreground">Overall Progress</span>
-              <span className="text-sm font-bold">{completionRate}%</span>
+              <span className="text-xs sm:text-sm font-medium text-muted-foreground">Overall Progress</span>
+              <span className="text-xs sm:text-sm font-bold">{completionRate}%</span>
             </div>
             <div className="w-full bg-muted rounded-full h-2">
               <div 

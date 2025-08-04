@@ -87,19 +87,19 @@ const Index = () => {
       }}
     >
       <div className="absolute inset-0 bg-background/85 backdrop-blur-sm"></div>
-      <div className="relative z-10 container mx-auto px-4 py-8 max-w-6xl">
+      <div className="relative z-10 container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-6xl">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
                 Task Management
               </h1>
-              <p className="text-muted-foreground mt-2">
+              <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">
                 Organize, track, and complete your tasks efficiently
               </p>
             </div>
-            <Button onClick={handleCreateTask} className="gap-2 shadow-elegant">
+            <Button onClick={handleCreateTask} className="gap-2 shadow-elegant w-full sm:w-auto">
               <Plus className="h-4 w-4" />
               New Task
             </Button>
@@ -107,12 +107,12 @@ const Index = () => {
         </div>
 
         {/* Stats */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <TaskStats stats={taskStats} />
         </div>
 
         {/* Filters */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <TaskFilters
             filters={filters}
             onFiltersChange={setFilters}
@@ -135,7 +135,7 @@ const Index = () => {
                     : "Get started by creating your first task!"}
                 </p>
                 {!Object.keys(filters).some(key => filters[key as keyof typeof filters]) && (
-                  <Button onClick={handleCreateTask} className="gap-2">
+                  <Button onClick={handleCreateTask} className="gap-2 w-full sm:w-auto">
                     <Plus className="h-4 w-4" />
                     Create Your First Task
                   </Button>

@@ -34,23 +34,25 @@ export const TaskCard = ({ task, onEdit, onDelete, onStatusChange }: TaskCardPro
       priorityColors[task.priority],
       isOverdue && "ring-2 ring-destructive/50"
     )}>
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-start gap-3">
         <div className="flex-1 space-y-2">
-          <div className="flex items-center gap-2 flex-wrap">
-            <h3 className="font-semibold text-foreground line-clamp-1">{task.title}</h3>
-            <Badge className={statusColors[task.status]} variant="secondary">
-              {task.status.replace('-', ' ')}
-            </Badge>
-            <Badge variant="outline" className="text-xs">
-              {task.priority}
-            </Badge>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+            <h3 className="font-semibold text-foreground text-sm sm:text-base">{task.title}</h3>
+            <div className="flex items-center gap-2 flex-wrap">
+              <Badge className={statusColors[task.status]} variant="secondary">
+                {task.status.replace('-', ' ')}
+              </Badge>
+              <Badge variant="outline" className="text-xs">
+                {task.priority}
+              </Badge>
+            </div>
           </div>
           
           {task.description && (
-            <p className="text-sm text-muted-foreground line-clamp-2">{task.description}</p>
+            <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">{task.description}</p>
           )}
           
-          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs text-muted-foreground">
             <div className="flex items-center gap-1">
               <Clock className="h-3 w-3" />
               <span>Created {task.createdAt.toLocaleDateString()}</span>
@@ -68,7 +70,7 @@ export const TaskCard = ({ task, onEdit, onDelete, onStatusChange }: TaskCardPro
           </div>
         </div>
         
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 sm:flex-col sm:gap-1">
           <Button
             variant="ghost"
             size="sm"
@@ -89,13 +91,13 @@ export const TaskCard = ({ task, onEdit, onDelete, onStatusChange }: TaskCardPro
       </div>
       
       {task.status !== 'completed' && task.status !== 'cancelled' && (
-        <div className="mt-3 flex gap-2">
+        <div className="mt-3 flex flex-col sm:flex-row gap-2">
           {task.status === 'pending' && (
             <Button
               variant="outline"
               size="sm"
               onClick={() => onStatusChange(task.id, 'in-progress')}
-              className="text-xs"
+              className="text-xs w-full sm:w-auto"
             >
               Start Task
             </Button>
@@ -105,7 +107,7 @@ export const TaskCard = ({ task, onEdit, onDelete, onStatusChange }: TaskCardPro
               variant="outline"
               size="sm"
               onClick={() => onStatusChange(task.id, 'completed')}
-              className="text-xs"
+              className="text-xs w-full sm:w-auto"
             >
               Mark Complete
             </Button>

@@ -54,7 +54,7 @@ export const TaskFilters = ({
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex flex-col gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
@@ -65,9 +65,9 @@ export const TaskFilters = ({
           />
         </div>
         
-        <div className="flex gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <Select value={filters.status || 'all'} onValueChange={handleStatusFilter}>
-            <SelectTrigger className="w-32">
+            <SelectTrigger>
               <SelectValue placeholder="Status" />
             </SelectTrigger>
             <SelectContent>
@@ -80,7 +80,7 @@ export const TaskFilters = ({
           </Select>
           
           <Select value={filters.priority || 'all'} onValueChange={handlePriorityFilter}>
-            <SelectTrigger className="w-32">
+            <SelectTrigger>
               <SelectValue placeholder="Priority" />
             </SelectTrigger>
             <SelectContent>
@@ -98,7 +98,7 @@ export const TaskFilters = ({
               onSortChange(sort, dir);
             }}
           >
-            <SelectTrigger className="w-40">
+            <SelectTrigger>
               <ArrowUpDown className="h-4 w-4 mr-2" />
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
@@ -116,13 +116,13 @@ export const TaskFilters = ({
         </div>
       </div>
       
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="flex items-center gap-2 flex-wrap">
           {hasActiveFilters && (
             <>
-              <span className="text-sm text-muted-foreground">Filters:</span>
+              <span className="text-sm text-muted-foreground hidden sm:inline">Filters:</span>
               {filters.status && (
-                <Badge variant="secondary" className="gap-1">
+                <Badge variant="secondary" className="gap-1 text-xs">
                   Status: {filters.status}
                   <Button
                     variant="ghost"
@@ -135,7 +135,7 @@ export const TaskFilters = ({
                 </Badge>
               )}
               {filters.priority && (
-                <Badge variant="secondary" className="gap-1">
+                <Badge variant="secondary" className="gap-1 text-xs">
                   Priority: {filters.priority}
                   <Button
                     variant="ghost"
@@ -148,7 +148,7 @@ export const TaskFilters = ({
                 </Badge>
               )}
               {filters.search && (
-                <Badge variant="secondary" className="gap-1">
+                <Badge variant="secondary" className="gap-1 text-xs">
                   Search: "{filters.search}"
                   <Button
                     variant="ghost"
@@ -172,7 +172,7 @@ export const TaskFilters = ({
           )}
         </div>
         
-        <span className="text-sm text-muted-foreground">
+        <span className="text-sm text-muted-foreground text-center sm:text-right">
           {taskCount} task{taskCount !== 1 ? 's' : ''}
         </span>
       </div>

@@ -79,9 +79,9 @@ export const TaskDialog = ({ task, open, onClose, onSave, onUpdate }: TaskDialog
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="w-[95vw] max-w-md mx-auto">
         <DialogHeader>
-          <DialogTitle>{task ? 'Edit Task' : 'Create New Task'}</DialogTitle>
+          <DialogTitle className="text-base sm:text-lg">{task ? 'Edit Task' : 'Create New Task'}</DialogTitle>
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -107,9 +107,9 @@ export const TaskDialog = ({ task, open, onClose, onSave, onUpdate }: TaskDialog
             />
           </div>
           
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label>Status</Label>
+              <Label className="text-sm">Status</Label>
               <Select
                 value={formData.status}
                 onValueChange={(value: TaskStatus) => 
@@ -129,7 +129,7 @@ export const TaskDialog = ({ task, open, onClose, onSave, onUpdate }: TaskDialog
             </div>
             
             <div className="space-y-2">
-              <Label>Priority</Label>
+              <Label className="text-sm">Priority</Label>
               <Select
                 value={formData.priority}
                 onValueChange={(value: TaskPriority) => 
@@ -158,11 +158,11 @@ export const TaskDialog = ({ task, open, onClose, onSave, onUpdate }: TaskDialog
             />
           </div>
           
-          <div className="flex gap-2 pt-4">
-            <Button type="button" variant="outline" onClick={onClose} className="flex-1">
+          <div className="flex flex-col sm:flex-row gap-3 pt-4">
+            <Button type="button" variant="outline" onClick={onClose} className="flex-1 order-2 sm:order-1">
               Cancel
             </Button>
-            <Button type="submit" className="flex-1">
+            <Button type="submit" className="flex-1 order-1 sm:order-2">
               {task ? 'Update' : 'Create'} Task
             </Button>
           </div>
